@@ -1,3 +1,5 @@
+import './TodoCounter.css';
+
 function TodoCounter(props){
     return(
     <h1>
