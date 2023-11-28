@@ -1,0 +1,50 @@
+/* Estilos para la viñeta de cada tarea */
+.Icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.Icon-check {
+    /*position: absolute;*/
+    left: 12px;
+}
+
+.Icon-check--active {
+    color:#34d399;
+}
+
+.TodoItem-p {
+    margin: 24px 0 24px 24px;
+    width: calc(100%-120px);
+    font-size: 18;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.TodoItem-p--complete  {
+    text-decoration: line-through;
+}
+
+/* Estilos para el botón de eliminar tarea */
+.todo-buttonX {
+    background-color: #2b6cb0; /* Verde claro para el botón */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 10px;
+    cursor: pointer;
+    margin: 20px 0;
+    display: inline-block; /* Permite centrar el botón con text-align */
+    transition: background-color 0.3s;
+}
+
+.todo-buttonX:hover {
+    background-color: rgb(228, 24, 2); /* Cambia a azul marino al pasar el cursor */
+}
