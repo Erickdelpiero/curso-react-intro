@@ -1,6 +1,6 @@
 function TodoSearch(props){
     return(
-    <input placeholder="Buscar..."/>
+    <input className="todo-search" placeholder="Buscar..."/>
     );
     }
 

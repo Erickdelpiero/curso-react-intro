@@ -3,6 +3,8 @@ import { TodoSearch } from './Componentes/TodoSearch';
 import { TodoList } from './Componentes/TodoList';
 import { TodoItem } from './Componentes/TodoItem';
 import { TodoButton } from './Componentes/TodoButton';
+import { Logo } from './Componentes/Logo';
+import './index.css';
 
 const DefaultTodos=[
   {texto: 'Hola, Todo1', completed: true},
@@ -28,6 +30,7 @@ function App() {
       </TodoList>
       
       <TodoButton/>
+      <Logo/>
     </>
   );
 }

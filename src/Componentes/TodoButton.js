@@ -1,6 +1,6 @@
 function TodoButton(){
     return(
-        <button>X</button>
+        <button className="todo-button">Crea un nuevo Todo</button>
     );
     }
 
