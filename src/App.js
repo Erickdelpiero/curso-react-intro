@@ -8,23 +8,28 @@ import React from 'react';
 import './index.css';
 
 const DefaultTodos=[
-  {texto: 'Hola, Todo1', completed: true},
-  {texto: 'Hola, Todo2', completed: false},
-  {texto: 'Hola, Todo3', completed: true},
-  {texto: 'Hola, Todo4', completed: true},
-  {texto: 'Hola, Todo4', completed: false},
+  {texto: 'Todo1: Despertar temprano', completed: true},
+  {texto: 'Todo2: Despertar tarde', completed: false},
+  {texto: 'Todo3: Comer feliz', completed: true},
+  {texto: 'Todo4: Comer triste', completed: false},
+  {texto: 'Todo5: Bailar', completed: true},
 ]
 
 function App() {
   const [searchValue, setSearchValue]= React.useState('');
   console.log("Los usuarios buscan Todo's de "+searchValue);
 
-  const [todoValue, todoSetValue]= React.useState(DefaultTodos);
+  const [todoValue]= React.useState(DefaultTodos);
+
+  //Estado derivado
+  const completedTodos=todoValue.filter(todo=>!!todo.completed).length;
+  const searchedTodos= DefaultTodos.filter(todo=>{
+    return todo.texto.toLowerCase().includes(searchValue.toLowerCase())});
   
   return (
     <>
       <TodoCounter   
-        completed={todoValue.filter(todo=>!!todo.completed).length}   
+        completed={completedTodos}   
         total={todoValue.length}/>
 
       <TodoSearch 
@@ -32,7 +37,7 @@ function App() {
         setSearchValue={setSearchValue}/>
 
       <TodoList>
-        {DefaultTodos.map(Todo => (
+        {searchedTodos.map(Todo => (
           <TodoItem
           key={Todo.texto}
           tex={Todo.texto}
