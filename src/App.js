@@ -4,21 +4,32 @@ import { TodoList } from './Componentes/TodoList';
 import { TodoItem } from './Componentes/TodoItem';
 import { TodoButton } from './Componentes/TodoButton';
 import { Logo } from './Componentes/Logo';
+import React from 'react';
 import './index.css';
 
 const DefaultTodos=[
   {texto: 'Hola, Todo1', completed: true},
-  {texto: 'Hola, Todo2', completed: true},
-  {texto: 'Hola, Todo3', completed: false},
+  {texto: 'Hola, Todo2', completed: false},
+  {texto: 'Hola, Todo3', completed: true},
   {texto: 'Hola, Todo4', completed: true},
-  {texto: 'Hola, Todo5', completed: false}
+  {texto: 'Hola, Todo4', completed: false},
 ]
 
 function App() {
+  const [searchValue, setSearchValue]= React.useState('');
+  console.log("Los usuarios buscan Todo's de "+searchValue);
+
+  const [todoValue, todoSetValue]= React.useState(DefaultTodos);
+  
   return (
     <>
-      <TodoCounter   completed={3}   total={18}/>
-      <TodoSearch />
+      <TodoCounter   
+        completed={todoValue.filter(todo=>!!todo.completed).length}   
+        total={todoValue.length}/>
+
+      <TodoSearch 
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}/>
 
       <TodoList>
         {DefaultTodos.map(Todo => (

@@ -3,7 +3,11 @@ import './TodoItem.css';
 function TodoItem(props) {
     return (
         <li className="todo-item">
-            <span className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}>
+            <span 
+            className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}
+            onClick={()=>{
+                console.log('Todo realizado');
+                }}>
                 V
             </span>
             <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>
@@ -11,8 +15,7 @@ function TodoItem(props) {
             </p>
             <button className="todo-buttonX" onClick={()=>{
             console.log('Le diste click a eliminar Todo');
-            }
-            }>
+            }}>
                 X
             </button>
         </li>
