@@ -5,9 +5,7 @@ function TodoItem(props) {
         <li className="todo-item">
             <span 
             className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}
-            onClick={()=>{
-                console.log('Todo realizado');
-                }}>
+            onClick={props.onComplete}>
                 V
             </span>
             <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>

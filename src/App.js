@@ -8,23 +8,30 @@ import React from 'react';
 import './index.css';
 
 const DefaultTodos=[
-  {texto: 'Todo1: Despertar temprano', completed: true},
+  {texto: 'Todo1: Despertar temprano', completed: false},
   {texto: 'Todo2: Despertar tarde', completed: false},
-  {texto: 'Todo3: Comer feliz', completed: true},
+  {texto: 'Todo3: Comer feliz', completed: false},
   {texto: 'Todo4: Comer triste', completed: false},
-  {texto: 'Todo5: Bailar', completed: true},
+  {texto: 'Todo5: Bailar', completed: false},
 ]
 
 function App() {
+  //Estados
   const [searchValue, setSearchValue]= React.useState('');
-  console.log("Los usuarios buscan Todo's de "+searchValue);
-
-  const [todoValue]= React.useState(DefaultTodos);
+  const [todoValue, setTodoValue]= React.useState(DefaultTodos);
 
   //Estado derivado
   const completedTodos=todoValue.filter(todo=>!!todo.completed).length;
   const searchedTodos= DefaultTodos.filter(todo=>{
     return todo.texto.toLowerCase().includes(searchValue.toLowerCase())});
+
+  const todoCompletado = (tex)=>{
+    const newTodo= [...todoValue];
+    const indexTodo= newTodo.findIndex(
+      (todo) => todo.texto===tex)
+    newTodo[indexTodo].completed = true;
+    setTodoValue(newTodo);
+  }
   
   return (
     <>
@@ -41,7 +48,8 @@ function App() {
           <TodoItem
           key={Todo.texto}
           tex={Todo.texto}
-          completed={Todo.completed}/>
+          completed={Todo.completed}
+          onComplete={() => todoCompletado(Todo.texto)}/>
         ))}
       </TodoList>
       
