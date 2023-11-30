@@ -11,9 +11,9 @@ function TodoItem(props) {
             <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>
                 {props.tex}
             </p>
-            <button className="todo-buttonX" onClick={()=>{
-            console.log('Le diste click a eliminar Todo');
-            }}>
+            <button
+            className="todo-buttonX" 
+            onClick={props.onDelete}>
                 X
             </button>
         </li>

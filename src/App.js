@@ -22,7 +22,7 @@ function App() {
 
   //Estado derivado
   const completedTodos=todoValue.filter(todo=>!!todo.completed).length;
-  const searchedTodos= DefaultTodos.filter(todo=>{
+  const searchedTodos= todoValue.filter(todo=>{
     return todo.texto.toLowerCase().includes(searchValue.toLowerCase())});
 
   const todoCompletado = (tex)=>{
@@ -30,6 +30,14 @@ function App() {
     const indexTodo= newTodo.findIndex(
       (todo) => todo.texto===tex)
     newTodo[indexTodo].completed = true;
+    setTodoValue(newTodo);
+  }
+
+  const todoDelete = (tex)=>{
+    const newTodo= [...todoValue];
+    const indexTodo= newTodo.findIndex(
+      (todo) => todo.texto===tex)
+    newTodo.splice(indexTodo, 1);
     setTodoValue(newTodo);
   }
   
@@ -49,7 +57,8 @@ function App() {
           key={Todo.texto}
           tex={Todo.texto}
           completed={Todo.completed}
-          onComplete={() => todoCompletado(Todo.texto)}/>
+          onComplete={() => todoCompletado(Todo.texto)}
+          onDelete={()=>todoDelete(Todo.texto)}/>
         ))}
       </TodoList>
       
